@@ -570,7 +570,6 @@ var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _appWeather = require("./appWeather");
 var _appWeatherDefault = parcelHelpers.interopDefault(_appWeather);
-(0, _appWeatherDefault.default)();
 const BASE_URL = "https://pixabay.com/api/";
 const KEY = "33761438-9314d2b90b41fb92b07a88ae9";
 const lightbox = new (0, _simplelightboxDefault.default)(".gallery a", {
@@ -7347,15 +7346,15 @@ parcelHelpers.defineInteropFlag(exports);
 var _fetchWeather = require("./fetchWeather");
 var _appWeatherCss = require("./css/appWeather.css");
 const weather = document.querySelector("#root");
-// navigator.geolocation.getCurrentPosition(function(position) {
-//  console.log(position.coords.latitude, position.coords.longitude);
-// });
+navigator.geolocation.getCurrentPosition(function(position) {
+    console.log(position.coords.latitude, position.coords.longitude);
+});
 const App = ()=>{
     const query = "berlin,de";
     (0, _fetchWeather.fetchWeather)(query).then(renderWeather).catch((error)=>{});
 };
 function renderWeather(weather) {
-    console.log(weather.main.temp, weather.name, Math.round(weather.main.temp), weather.weather[0].icon, weather.weather[0].description);
+    console.log(weather.main.temp, weather.name, Math.round(weather.main.temp), weather.weather[0].icon, weather.weather[0].description, new Date().getDay(), new Date().getDate(), new Date().getFullYear(), new Date().getMonth());
     console.log(`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`);
     weather.innerHTML = `
         <div className="main-container">
@@ -7373,8 +7372,46 @@ function renderWeather(weather) {
                         <p>${weather.weather[0].description}</p>
                     </div>
                 </div>
-        </div> `;
+        </div>
+        
+        
+        <div class="main-container">
+
+        <div class="weather-nav">
+        <div class="city-temp">
+        ${Math.round(weather.main.temp)}
+            <sup>&deg;</sup>
+        </div>
+  
+        <div class="city-info">
+        <ul class="info">
+          <li class="weather-info">
+            <p>${weather.weather[0].description}</p>
+          </li>
+          <li class="city-name">
+          <div className="city">
+            <p>
+                <span>${weather.name}</span>
+                <sup>${weather.sys.country}</sup>
+            </p>
+          </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+          
+              <div class="info-icon">
+                  <img class="city-icon" ${`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} alt=${weather.weather[0].description}/>
+              </div>
+  
+              <div>
+                <p class="info-date"> ${new Date().getDay()} <br> ${new Date()} </p>
+                <button class="weatherBtn">weather for week</button>
+              </div>
+        
+        `;
 }
+App();
 exports.default = App;
 
 },{"./fetchWeather":"1xtfP","./css/appWeather.css":"i1iCE","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1xtfP":[function(require,module,exports) {

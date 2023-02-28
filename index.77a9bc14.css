@@ -22,7 +22,7 @@ li {
 }
 
 button {
-  color: orange;
+  color: red;
   justify-content: center;
   align-items: center;
   padding: 20px;
@@ -292,36 +292,20 @@ body.hidden-scroll {
 }
 
 #root {
-  color: #1e2432;
+  font: "Roboto";
+  color: #fff;
   height: 100%;
-  background: #0a1f44;
+  background: #4440f7;
   margin: 0;
-  font: .9rem sans-serif;
 }
 
 .main-container {
-  height: 100%;
-  background-color: #0000;
-  background-image: linear-gradient(#0000004d, #0000006b), url("https://hdwallpaper20.com/wp-content/uploads/2017/07/wallpaper-wp4001752.jpg");
-  background-position: center;
-  background-repeat: repeat, repeat;
-  background-size: cover;
-  background-attachment: scroll, scroll;
-  background-origin: padding-box, padding-box;
-  background-clip: border-box, border-box;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
-
-.search {
-  background: #fafafad9;
-  border: none;
-  border-radius: 20px;
-  outline: none;
-  margin-bottom: 5%;
-  padding: 20px 7%;
+  width: 353px;
+  height: 785px;
+  background: #4440f7 center / cover;
+  position: absolute;
+  top: 0;
+  right: 0%;
 }
 
 .city {
@@ -335,56 +319,96 @@ body.hidden-scroll {
   box-shadow: 10px 10px 5px #0f0f0f67;
 }
 
-p {
-  text-transform: uppercase;
-  letter-spacing: .05em;
-  margin-top: 10px;
-}
-
 .city-temp {
-  color: #1e2432;
+  color: #fff;
   text-align: center;
-  margin-top: 10px;
-  font-size: 5rem;
+  width: 33%;
+  flex-shrink: 0;
+  margin: 0;
+  padding-right: 8px;
+  font-size: 64px;
   font-weight: bold;
+  display: flex;
 }
 
-.city sup {
-  font-size: .5em;
+.city-info {
+  border-color: #fff currentColor #fff #fff;
+  border-left-style: solid;
+  border-right-width: 2px;
+  flex-flow: column wrap;
+  flex: 1;
+  place-content: space-between flex-end;
+  align-items: baseline;
+  padding-left: 15px;
+  display: flex;
 }
 
 .city-name {
-  font-size: 2em;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
 }
 
-.city-name sup {
-  color: #fff;
-  background: #ff8c00;
-  border-radius: 30px;
-  margin-left: .2em;
-  padding: .2em .6em;
+.info-icon {
+  object-fit: contain;
+  width: 165px;
+  margin: auto;
+  padding-top: 90px;
 }
 
 .city-icon {
-  width: 100px;
-  height: 100px;
+  width: 165px;
+  height: 158px;
   margin-top: 10px;
 }
 
 .info {
-  flex-direction: column;
-  align-items: center;
+  flex-flow: column wrap;
+  place-content: space-between flex-end;
+  align-items: baseline;
   display: flex;
 }
 
-@media only screen and (max-width: 600px) {
-  .search {
-    padding: 20px 15%;
-  }
+.weather-nav {
+  flex-flow: row;
+  place-content: center flex-start;
+  align-items: center;
+  margin-top: 40px;
+  margin-left: 53px;
+  margin-right: 53px;
+  display: flex;
+}
 
-  .city {
-    padding: 40px 20%;
-  }
+.weather-info {
+  margin: 0;
+  font-family: Roboto;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 42px;
+}
+
+.weatherBtn {
+  color: #fff;
+  text-align: center;
+  background: #fefeff4d;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.info-date {
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 36px;
+  display: flex;
+}
+
+.info-down {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
 }
 
 /*# sourceMappingURL=index.77a9bc14.css.map */
