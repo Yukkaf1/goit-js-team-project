@@ -6,6 +6,8 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import axios from 'axios';
 import App from './appWeather';
+App;
+
 
 const BASE_URL = 'https://pixabay.com/api/';
 const KEY = '33761438-9314d2b90b41fb92b07a88ae9';
@@ -25,12 +27,13 @@ let page = 1;
   const weather = document.querySelector('#root');
   weather.insertAdjacentHTML('beforeend', App);
 
+
   async function fetchPicture(clientRequest, page) {
       try {
       return axios.get(
-        `${BASE_URL}/?key=${KEY}&q=${clientRequest}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=40`
+       `${ BASE_URL}/?key=${KEY}&q=${clientRequest}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=40`
   )}
-catch (error) {
+  catch (error) {
     console.log('ERROR: ' , error);
 }
 
