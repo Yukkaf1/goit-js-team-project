@@ -4,9 +4,9 @@ import './css/appWeather.css';
 
 const weather = document.querySelector('#root'); 
 
-navigator.geolocation.getCurrentPosition(function(position) {
- console.log(position.coords.latitude, position.coords.longitude);
-});
+// navigator.geolocation.getCurrentPosition(function(position) {
+//  console.log(position.coords.latitude, position.coords.longitude);
+// });
 
 const App = () => {
        const query = 'berlin,de'
@@ -19,7 +19,7 @@ const App = () => {
 console.log(weather.main.temp, weather.name, Math.round(weather.main.temp), weather.weather[0].icon, weather.weather[0].description);
 console.log(`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`);
 
-weather.insertAdjacentHTML('beforeend', `
+weather.innerHTML = `
         <div className="main-container">
                 <div className="city">
                     <h2 className="city-name">
@@ -36,7 +36,6 @@ weather.insertAdjacentHTML('beforeend', `
                     </div>
                 </div>
         </div> `
-)
 }
 
 export default App;
