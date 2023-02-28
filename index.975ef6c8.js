@@ -570,7 +570,7 @@ var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _appWeather = require("./appWeather");
 var _appWeatherDefault = parcelHelpers.interopDefault(_appWeather);
-0, _appWeatherDefault.default;
+(0, _appWeatherDefault.default)();
 const BASE_URL = "https://pixabay.com/api/";
 const KEY = "33761438-9314d2b90b41fb92b07a88ae9";
 const lightbox = new (0, _simplelightboxDefault.default)(".gallery a", {
@@ -7347,9 +7347,9 @@ parcelHelpers.defineInteropFlag(exports);
 var _fetchWeather = require("./fetchWeather");
 var _appWeatherCss = require("./css/appWeather.css");
 const weather = document.querySelector("#root");
-navigator.geolocation.getCurrentPosition(function(position) {
-    console.log(position.coords.latitude, position.coords.longitude);
-});
+// navigator.geolocation.getCurrentPosition(function(position) {
+//  console.log(position.coords.latitude, position.coords.longitude);
+// });
 const App = ()=>{
     const query = "berlin,de";
     (0, _fetchWeather.fetchWeather)(query).then(renderWeather).catch((error)=>{});
@@ -7357,7 +7357,7 @@ const App = ()=>{
 function renderWeather(weather) {
     console.log(weather.main.temp, weather.name, Math.round(weather.main.temp), weather.weather[0].icon, weather.weather[0].description);
     console.log(`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`);
-    weather.insertAdjacentHTML("beforeend", `
+    weather.innerHTML = `
         <div className="main-container">
                 <div className="city">
                     <h2 className="city-name">
@@ -7373,7 +7373,7 @@ function renderWeather(weather) {
                         <p>${weather.weather[0].description}</p>
                     </div>
                 </div>
-        </div> `);
+        </div> `;
 }
 exports.default = App;
 
