@@ -568,6 +568,9 @@ var _simplelightboxDefault = parcelHelpers.interopDefault(_simplelightbox);
 var _simpleLightboxMinCss = require("simplelightbox/dist/simple-lightbox.min.css");
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
+var _appWeather = require("./appWeather");
+var _appWeatherDefault = parcelHelpers.interopDefault(_appWeather);
+0, _appWeatherDefault.default;
 const BASE_URL = "https://pixabay.com/api/";
 const KEY = "33761438-9314d2b90b41fb92b07a88ae9";
 const lightbox = new (0, _simplelightboxDefault.default)(".gallery a", {
@@ -579,6 +582,8 @@ const inputForm = document.querySelector("input");
 const loadBtn = document.querySelector("#load-more");
 const searchForm = document.querySelector("#search-form");
 const gallery = document.querySelector(".gallery");
+const weather = document.querySelector("#root");
+weather.insertAdjacentHTML("beforeend", (0, _appWeatherDefault.default));
 async function fetchPicture(clientRequest, page) {
     try {
         return (0, _axiosDefault.default).get(`${BASE_URL}/?key=${KEY}&q=${clientRequest}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=40`);
@@ -661,7 +666,7 @@ function onLoadBtn(images) {
 loadBtn.addEventListener("click", onLoadBtn);
 searchForm.addEventListener("submit", onSearch);
 
-},{"./css/styles.css":"1CY4s","lodash.debounce":"3JP5n","notiflix":"5z0Oc","simplelightbox":"9ydBq","simplelightbox/dist/simple-lightbox.min.css":"kaxSc","axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1CY4s":[function() {},{}],"3JP5n":[function(require,module,exports) {
+},{"./css/styles.css":"1CY4s","lodash.debounce":"3JP5n","notiflix":"5z0Oc","simplelightbox":"9ydBq","simplelightbox/dist/simple-lightbox.min.css":"kaxSc","axios":"jo6P5","./appWeather":"8eLUr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1CY4s":[function() {},{}],"3JP5n":[function(require,module,exports) {
 /**
  * lodash (Custom Build) <https://lodash.com/>
  * Build: `lodash modularize exports="npm" -o ./`
@@ -6129,6 +6134,8 @@ var _urlsearchParamsJs = require("./classes/URLSearchParams.js");
 var _urlsearchParamsJsDefault = parcelHelpers.interopDefault(_urlsearchParamsJs);
 var _formDataJs = require("./classes/FormData.js");
 var _formDataJsDefault = parcelHelpers.interopDefault(_formDataJs);
+var _blobJs = require("./classes/Blob.js");
+var _blobJsDefault = parcelHelpers.interopDefault(_blobJs);
 /**
  * Determine if we're running in a standard browser environment
  *
@@ -6167,7 +6174,7 @@ exports.default = {
     classes: {
         URLSearchParams: (0, _urlsearchParamsJsDefault.default),
         FormData: (0, _formDataJsDefault.default),
-        Blob
+        Blob: (0, _blobJsDefault.default)
     },
     isStandardBrowserEnv,
     isStandardBrowserWebWorkerEnv,
@@ -6181,7 +6188,7 @@ exports.default = {
     ]
 };
 
-},{"./classes/URLSearchParams.js":"5cIHE","./classes/FormData.js":"7i1jd","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5cIHE":[function(require,module,exports) {
+},{"./classes/URLSearchParams.js":"5cIHE","./classes/FormData.js":"7i1jd","./classes/Blob.js":"8chF6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5cIHE":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _axiosURLSearchParamsJs = require("../../../helpers/AxiosURLSearchParams.js");
@@ -6194,6 +6201,12 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 "use strict";
 exports.default = typeof FormData !== "undefined" ? FormData : null;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8chF6":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+"use strict";
+exports.default = typeof Blob !== "undefined" ? Blob : null;
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"01RfH":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -7144,7 +7157,7 @@ exports.default = {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "VERSION", ()=>VERSION);
-const VERSION = "1.3.3";
+const VERSION = "1.3.4";
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"45wzn":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -7328,6 +7341,56 @@ Object.entries(HttpStatusCode).forEach(([key, value])=>{
 });
 exports.default = HttpStatusCode;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["jC2qd","8lqZg"], "8lqZg", "parcelRequired870")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8eLUr":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _fetchWeather = require("./fetchWeather");
+var _appWeatherCss = require("./css/appWeather.css");
+const weather = document.querySelector("#root");
+navigator.geolocation.getCurrentPosition(function(position) {
+    console.log(position.coords.latitude, position.coords.longitude);
+});
+const App = ()=>{
+    const query = "berlin,de";
+    (0, _fetchWeather.fetchWeather)(query).then(renderWeather).catch((error)=>{});
+};
+function renderWeather(weather) {
+    console.log(weather.main.temp, weather.name, Math.round(weather.main.temp), weather.weather[0].icon, weather.weather[0].description);
+    console.log(`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`);
+    weather.insertAdjacentHTML("beforeend", `
+        <div className="main-container">
+                <div className="city">
+                    <h2 className="city-name">
+                        <span>${weather.name}</span>
+                        <sup>${weather.sys.country}</sup>
+                    </h2>
+                    <div className="city-temp">
+                        ${Math.round(weather.main.temp)}
+                        <sup>&deg;C</sup>
+                    </div>
+                    <div className="info">
+                        <img className="city-icon" src=${`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} alt=${weather.weather[0].description} />
+                        <p>${weather.weather[0].description}</p>
+                    </div>
+                </div>
+        </div> `);
+}
+exports.default = App;
+
+},{"./fetchWeather":"1xtfP","./css/appWeather.css":"i1iCE","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1xtfP":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "fetchWeather", ()=>fetchWeather);
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
+const URL = "https://api.openweathermap.org/data/2.5/weather";
+const API_KEY = "be0f81a8f9f4c462088b51501fa506a7";
+const fetchWeather = async (query)=>{
+    const { data  } = await (0, _axiosDefault.default).get(`${URL}/?&q=${query}&exclude=deyly&APPID=${API_KEY}`);
+    console.log(data);
+    return data;
+};
+
+},{"axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"i1iCE":[function() {},{}]},["jC2qd","8lqZg"], "8lqZg", "parcelRequired870")
 
 //# sourceMappingURL=index.975ef6c8.js.map
