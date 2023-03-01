@@ -11,8 +11,8 @@ const weatherApp = () => {
   geoWeatherApp()
     }
 
-  function geoWeatherApp() {
-      // if(navigator.geolocation){
+const geoWeatherApp = () => {
+      
       navigator.geolocation.getCurrentPosition(function(position) {
         console.log(position.coords.latitude, position.coords.longitude);
         const lat = position.coords.latitude
@@ -23,13 +23,15 @@ const weatherApp = () => {
       fetchWeatherGeo(lat, lon, units)
            .then(renderWeather)
             .catch(error => {});
-      }
-     )
-    // } else {fetchWeatherGeo()}
+      }) ??
+      fetchWeatherGeo()
+           .then(renderWeather)
+            .catch(error => {});
+   
     }
     
 
-    function renderWeather(weather) {
+const renderWeather = (weather) => {
 console.log(weather.main.temp, weather.name, Math.round(weather.main.temp), weather.weather[0].icon, weather.weather[0].description, new Date().getDay(), new Date().getDate(), new Date().getFullYear(), new Date().getMonth());
 console.log(`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`);
 

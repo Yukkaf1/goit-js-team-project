@@ -11,8 +11,9 @@ const API_KEY = 'be0f81a8f9f4c462088b51501fa506a7'
 //     return data;
 // }
 
-export const fetchWeatherGeo = async (lat=52.5200, lon=13.4050, units=metric) => {
-    console.log('Есть гео')
+export const fetchWeatherGeo = async (lat=90.0000, lon=-135.0000, units='metric') => {
+ console.log('Есть гео')
+
  const { data } = await axios.get(`${URL}/?lat=${lat}&lon=${lon}&units=${units}&exclude=deyly&APPID=${API_KEY}`);
     console.log (data);
     return data;
