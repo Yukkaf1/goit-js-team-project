@@ -9,10 +9,17 @@ navigator.geolocation.getCurrentPosition(function(position) {
 });
 
 const App = () => {
-       const query = 'berlin,de'
-       fetchWeather(query)
+  const lat ='49.742'
+  const lon = '6.5626'
+  const units = 'metric'
+  fetchWeather(lat, lon, units)
        .then(renderWeather)
         .catch(error => {});
+
+      //  const query = 'berlin,de'
+      //  fetchWeather(query)
+      //  .then(renderWeather)
+      //   .catch(error => {});
     }
 
     function renderWeather(weather) {
