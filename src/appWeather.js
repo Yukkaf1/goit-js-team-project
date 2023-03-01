@@ -3,7 +3,6 @@ import { fetchWeatherCity } from './fetchWeather';
 import './css/appWeather.css';
 import moment from 'moment';
 
-
 const weatherEl = document.querySelector('#root'); 
 day =  moment(new Date()).format('ddd')
 date = moment(new Date()).format('DD MMM YYYY')
@@ -13,7 +12,7 @@ const weatherApp = () => {
     }
 
   function geoWeatherApp() {
-      
+      // if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition(function(position) {
         console.log(position.coords.latitude, position.coords.longitude);
         const lat = position.coords.latitude
@@ -26,6 +25,7 @@ const weatherApp = () => {
             .catch(error => {});
       }
      )
+    // } else {fetchWeatherGeo()}
     }
     
 
@@ -46,8 +46,8 @@ weatherEl.innerHTML = `
         <div class="city-info">
             <p class = "weather-description">${weather.weather[0].description}</p>
             <p class = "city-name">
-                <span>${weather.name}</span>
-                <sup>${weather.sys.country}</sup>
+                <span class = "weather-name">${weather.name}</span>
+
             </p>
         
       </div>
