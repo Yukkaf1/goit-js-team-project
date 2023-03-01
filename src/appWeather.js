@@ -44,19 +44,12 @@ weatherEl.innerHTML = `
         </div>
   
         <div class="city-info">
-        <ul class="info">
-          <li class="weather-info">
-            <p>${weather.weather[0].description}</p>
-          </li>
-          <li class="city-name">
-          <div className="city">
-            <p>
+            <p class = "weather-description">${weather.weather[0].description}</p>
+            <p class = "city-name">
                 <span>${weather.name}</span>
                 <sup>${weather.sys.country}</sup>
             </p>
-          </div>
-          </li>
-        </ul>
+        
       </div>
     </div>
           
@@ -64,8 +57,8 @@ weatherEl.innerHTML = `
                   <img class="city-icon" src="${`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}" alt="${weather.weather[0].description}"/>
               </div>
   
-              <div>
-                <p class="info-date"> ${date} <br> ${day} </p>
+              <div  class = "info-down">
+                <p class="info-date"> ${day} <br> ${date} </p>
 
                 <button class="weatherBtn">weather for week</button>
               </div>

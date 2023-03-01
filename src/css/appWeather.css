@@ -16,6 +16,7 @@
     background-position: center;
     width: 353px;
     height: 785px;
+    margin-top: 232px;
 }
 
 .city {
@@ -110,6 +111,13 @@
     line-height: 42px;
  margin: 0;
 
+}
+
+.weather-description {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
 }
 
 .weatherBtn {
