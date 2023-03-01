@@ -1,26 +1,33 @@
-import { fetchWeather } from './fetchWeather';
+import { fetchWeatherGeo } from './fetchWeather';
+import { fetchWeatherCity } from './fetchWeather';
 import './css/appWeather.css';
+import moment from 'moment';
 
 
 const weatherEl = document.querySelector('#root'); 
+day =  moment(new Date()).format('ddd')
+date = moment(new Date()).format('DD MMM YYYY')
 
-navigator.geolocation.getCurrentPosition(function(position) {
- console.log(position.coords.latitude, position.coords.longitude);
-});
-
-const App = () => {
-  const lat ='49.742'
-  const lon = '6.5626'
-  const units = 'metric'
-  fetchWeather(lat, lon, units)
-       .then(renderWeather)
-        .catch(error => {});
-
-      //  const query = 'berlin,de'
-      //  fetchWeather(query)
-      //  .then(renderWeather)
-      //   .catch(error => {});
+const weatherApp = () => {
+  geoWeatherApp()
     }
+
+  function geoWeatherApp() {
+      
+      navigator.geolocation.getCurrentPosition(function(position) {
+        console.log(position.coords.latitude, position.coords.longitude);
+        const lat = position.coords.latitude
+        const lon = position.coords.longitude
+        const units = 'metric'
+
+
+      fetchWeatherGeo(lat, lon, units)
+           .then(renderWeather)
+            .catch(error => {});
+      }
+     )
+    }
+    
 
     function renderWeather(weather) {
 console.log(weather.main.temp, weather.name, Math.round(weather.main.temp), weather.weather[0].icon, weather.weather[0].description, new Date().getDay(), new Date().getDate(), new Date().getFullYear(), new Date().getMonth());
@@ -58,15 +65,15 @@ weatherEl.innerHTML = `
               </div>
   
               <div>
-                <p class="info-date"> ${new Date().getDay()} <br> ${new Date()} </p>
+                <p class="info-date"> ${date} <br> ${day} </p>
+
                 <button class="weatherBtn">weather for week</button>
               </div>
-        
         `
 }
 
-App();
+weatherApp();
 
-export default App;
+export default weatherApp;
      
  

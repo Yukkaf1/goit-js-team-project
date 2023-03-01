@@ -5,7 +5,7 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import axios from 'axios';
-import App from './appWeather';
+import weatherApp from './appWeather';
 
 const BASE_URL = 'https://pixabay.com/api/';
 const KEY = '33761438-9314d2b90b41fb92b07a88ae9';
@@ -21,9 +21,6 @@ let page = 1;
   const loadBtn = document.querySelector('#load-more');
   const searchForm = document.querySelector('#search-form');
   const gallery = document.querySelector('.gallery');
-
-  const weather = document.querySelector('#root');
-  weather.insertAdjacentHTML('beforeend', App);
 
   async function fetchPicture(clientRequest, page) {
       try {
