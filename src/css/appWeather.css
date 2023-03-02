@@ -8,21 +8,31 @@
 
 
 .main-container {
-    position: absolute;
-    right: 0%;
-    top: 0;
-    background:#4440F7;
-    background-size: cover;
-    background-position: center;
-    width: 353px;
-    height: 785px;
-    margin-top: 60px;
-    box-sizing: border-box;
-    border-radius: 4px;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
-    display: flex;
-    padding-bottom: 60px;
+
+    position: absolute; 
+    right: 0%;
+    top: 0;
+
+    background:#4440F7;
+    color: white;
+    background-size: cover;
+    background-position: center;
+
+    width: 288px;
+    height: 489px;
+
+
+    margin-top: 60px;
+
+    box-sizing: border-box;
+    border-radius: 4px;
+    
+   
+    padding-top: 32px;
+    padding-bottom: 32px;
 
 
 }
@@ -41,14 +51,14 @@
 .city-temp {
     display: flex;
     flex-shrink: 0;
-    font-size: 64px;
+    font-size: 55px;
     font-weight: bold;
     margin-top: 10px;
     margin: 0;
     color: white;
     text-align: center;
     padding-right: 8px;
-    width: 33%;
+    width: 40%;
 }
 
 .city-info {
@@ -120,7 +130,6 @@
     flex-wrap: nowrap;
     align-content: center;
     justify-content: flex-start;
-    margin-top: 40px;
     margin-left: 53px;
     margin-right: 53px;
 }
@@ -155,7 +164,7 @@ text-align: center;
 }
 
 .info-date {
-    font-size: 36px;
+    font-size: 28px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -168,8 +177,33 @@ text-align: center;
     align-items: center;
 }
 
-@media (max-width: 786px) {
-    .info-down {
+@media (min-width: 786px) {
+    .main-container {
+        width: 353px;
+        height: 675px;
+
+        padding-top: 40px;
+        padding-bottom: 60px;
+    }
+
+    .city-temp {
+        font-size: 64px;
+    }
+
+    .info-date {
+        font-size: 36px;
+    }
+}
+
+
+@media (min-width: 1280px) {
+    .main-container {
+        width: 395px;
+        height: 675px;
+    }
+
+    .info-date {
+        font-size: 46px;
         
     }
 }

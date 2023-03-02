@@ -1,11 +1,24 @@
-import { fetchWeatherGeo } from './fetchWeather';
-import { fetchWeatherCity } from './fetchWeather';
+
 import './css/appWeather.css';
 import moment from 'moment';
+import axios from 'axios';
+
+const URL = 'https://api.openweathermap.org/data/2.5/weather';
+const API_KEY = 'be0f81a8f9f4c462088b51501fa506a7'
 
 const weatherEl = document.querySelector('#root'); 
 day =  moment(new Date()).format('ddd')
 date = moment(new Date()).format('DD MMM YYYY')
+
+
+export const fetchWeatherGeo = async (lat=90.0000, lon=-135.0000, units='metric') => {
+  console.log('Есть гео')
+ 
+  const { data } = await axios.get(`${URL}/?lat=${lat}&lon=${lon}&units=${units}&exclude=deyly&APPID=${API_KEY}`);
+     console.log (data);
+     return data;
+ 
+ }
 
 const weatherApp = () => {
   geoWeatherApp()
