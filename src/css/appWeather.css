@@ -191,7 +191,7 @@ text-align: center;
     align-items: center;
 }
 
-@media (min-width: 786px) {
+@media screen and (min-width: 786px) {
     .main-container {
         width: 353px;
         height: 675px;
@@ -236,7 +236,7 @@ text-align: center;
 }
 
 
-@media (min-width: 1280px) {
+@media screen and (min-width: 1280px) {
     .main-container {
         width: 395px;
         height: 675px;

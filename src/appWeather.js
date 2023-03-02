@@ -11,7 +11,7 @@ day =  moment(new Date()).format('ddd')
 date = moment(new Date()).format('DD MMM YYYY')
 
 
-export const fetchWeatherGeo = async (lat=90.0000, lon=-135.0000, units='metric') => {
+const fetchWeatherGeo = async (lat=90.0000, lon=-135.0000, units='metric') => {
   console.log('Есть гео')
  
   const { data } = await axios.get(`${URL}/?lat=${lat}&lon=${lon}&units=${units}&exclude=deyly&APPID=${API_KEY}`);
@@ -46,7 +46,7 @@ const geoWeatherApp = () => {
 
 const renderWeather = (weather) => {
 console.log(weather.main.temp, weather.name, Math.round(weather.main.temp), weather.weather[0].icon, weather.weather[0].description, new Date().getDay(), new Date().getDate(), new Date().getFullYear(), new Date().getMonth());
-console.log(`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`);
+console.log(`https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`);
 
 weatherEl.innerHTML = `
         
