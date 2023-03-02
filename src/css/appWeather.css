@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 #root {
     font: 'Roboto';
     background: #4440F7;
@@ -35,6 +37,12 @@
     padding-bottom: 32px;
 
 
+}
+
+
+.weather-name {
+    display: flex;
+    align-items: center;
 }
 
 .city {
@@ -76,7 +84,7 @@
 }
 
 .city-name {
-    font-size: 20px;
+    font-size: 14px;
     padding: 0;
     margin: 0;
     color: white;
@@ -86,22 +94,20 @@
     padding: 10px 17px 10px 10px;
 }
 
-.weather-name {
-    display: flex;
-    align-items: center;
-}
 
 .weather-name::before {
     content: '';
     width: 27px;
     height: 27px ;
     background: url('../img/carbon_location-filled.svg') no-repeat center/contain;
+    background-repeat: no-repeat;
+    margin-right: 4px;
 }
 
 .info-icon {
-    padding-top: 90px;
     object-fit: contain;
-    width: 165px;
+    width: 128px;
+    height: 121px;
     margin: auto;
     flex: 1;
 }
@@ -149,18 +155,26 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 36px;
+    font-size: 24px;
     margin: 0;
+    text-transform: capitalize;
 
 }
 
 .weatherBtn {
+margin-top: 18px;
+padding: 8px 14px;
+
 font-size: 20px;
 color: white;
 background: rgba(254, 254, 255, 0.3);
 border-radius: 10px;
 border: none;
 text-align: center;
+}
+
+.weatherBtn:hover {
+  background-color: rgba(254, 254, 255, 0.5);
 }
 
 .info-date {
@@ -190,8 +204,34 @@ text-align: center;
         font-size: 64px;
     }
 
+    .city-name {
+        font-size: 20px;
+    }
+
+    .weather-description {
+        font-size: 36px;
+    }
+
+    .weather-name::before {
+        content: '';
+        width: 27px;
+        height: 27px;
+        margin-right: 8px;
+
+    }
+
+    .info-icon {
+       width: 165px;
+       height: 158px;
+    }
+
     .info-date {
         font-size: 36px;
+    }
+
+    .weatherBtn {
+        margin-top: 28px;
+        padding: 9px 12px;
     }
 }
 
