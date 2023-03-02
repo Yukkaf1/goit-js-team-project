@@ -14,13 +14,14 @@ const fetchWeather7day = async (lat=90.0000, lon=-135.0000, units='metric') => {
  
  }
 
+
  function fetchTemp () {
     fetchWeather7day()
-    .then(response => {
-        if (!response.ok) {
-            console.log('Oops, there is no country with that name');
-          } else return response.json();
-        })
+    // .then(response => {
+    //     if (!response.ok) {
+    //         console.log('Oops, there is no country with that name');
+    //       } else return response.json();
+    //     })
     .then(data => {
             const day1 = data.list[8]
             const day2 = data.list[16]
@@ -36,6 +37,7 @@ const fetchWeather7day = async (lat=90.0000, lon=-135.0000, units='metric') => {
         }
 
 
+ fetchTemp ()
  fetchWeather7day()
 
  export default fetchWeather7day;

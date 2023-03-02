@@ -8,8 +8,6 @@ import axios from 'axios';
 import weatherApp from './appWeather';
 import fetchWeather7day from './appWeather7day'
 
-fetchWeather7day();
-
 const BASE_URL = 'https://pixabay.com/api/';
 const KEY = '33761438-9314d2b90b41fb92b07a88ae9';
 
