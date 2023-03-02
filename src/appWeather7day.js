@@ -5,10 +5,6 @@ import axios from 'axios';
 import moment from 'moment';
 
 
-const weatherBtn = document.querySelector('#loadWeather')
-
-weatherBtn.addEventListener('click', fetchWeather7day)
-
 const fetchWeather7day = async (lat=90.0000, lon=-135.0000, units='metric') => {
   console.log('Есть гео')
  
