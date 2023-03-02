@@ -1,14 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-#root {
-    font: 'Roboto';
-    background: #4440F7;
-    color: white;
-    height: 100%;
-    margin: 0;
-}
-
-
 .main-container {
     display: flex;
     flex-direction: column;
@@ -100,7 +91,6 @@
     width: 27px;
     height: 27px ;
     background: url('../img/carbon_location-filled.svg') no-repeat center/contain;
-    background-repeat: no-repeat;
     margin-right: 4px;
 }
 
